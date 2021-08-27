@@ -46,9 +46,13 @@ app.use(cors())// Test를 하기 위해서 세팅 "실제 서버에 배포할 �
 })
 
 app.post('/certificate/upload', upload.single('file'), (req, res, next) => {
-    console.log(req.file)
+    console.log('zzz '+req.file["title"])
+    
     const {originalname } = req.file
     const { desc } = req.body;
+    const {title}= req.body;
+    console.log('title:'+title);
+    
     console.log(req.body);
 
 
@@ -57,7 +61,8 @@ app.post('/certificate/upload', upload.single('file'), (req, res, next) => {
     let data = JSON.parse(jsonBuf);
     data.certificate.push({
         path: `/img/certificate/${originalname}`,
-        desc: desc
+        desc: desc,
+        title:title
     })
     fs.writeFileSync(__dirname + '/public/json/certificate.json', JSON.stringify(data));
 

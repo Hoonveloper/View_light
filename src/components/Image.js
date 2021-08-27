@@ -1,12 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
-import Dropzone from 'react-dropzone';
 import styled from 'styled-components'
 import axios from 'axios';
-import './Image.css';
 import { List, Avatar, Space } from 'antd';
-import { Button } from 'antd';
-import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
+
 
 const StyleItem = styled(List.Item)`
 cursor: pointer;
@@ -14,7 +10,15 @@ cursor: pointer;
     opacity: 0.8;
 }
 `;
+const ImageContainer = styled.div`
+    width:100%;
+    h1{ 
+    border-bottom:3px solid gray;
+    font-weight:800;
 
+
+    }
+`;
 function Image() {
     const [data, setData] = useState([]);
     useEffect(() => {
@@ -47,8 +51,8 @@ function Image() {
     // }
     const listData = data.map((one) => ({
         href: 'https://ant.design',
-        title: `${one.path}`,
-
+        title: one.title,
+        img:one.path,
         description:
             `${one.desc}`,
 
@@ -75,8 +79,8 @@ function Image() {
 
     })
     return (
-        <div className="container">
-            <h1 className="title">게시글 목록</h1>
+        <ImageContainer>
+            <h1 >게시글 목록</h1>
 
             <List
                 itemLayout="vertical"
@@ -98,7 +102,7 @@ function Image() {
                             <img
                                 width={272}
                                 alt="logo"
-                                src={item.title}
+                                src={item.img}
                             />
                         }
                     >
@@ -111,7 +115,7 @@ function Image() {
                     </StyleItem>
                 )}
             />
-        </div>
+        </ImageContainer>
     )
 }
 

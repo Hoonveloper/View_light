@@ -3,15 +3,20 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Image from './components/Image'
 import Drag from './components/drag';
-import Sidebar from './components/Sidebar';
+import Home from './pages/Home';
 import Header from './components/Header';
+
 function App() {
   return (
-    <div>
+    <Router>
     <Header/>
-    <Sidebar/>
+   
+    <Switch>
+      <Route path="/" exact component={Home}></Route>
+  
+    </Switch>
     
-    </div>
+    </Router>
   );
 }
 

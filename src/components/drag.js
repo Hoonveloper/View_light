@@ -1,22 +1,45 @@
 import React, { useState, useEffect } from 'react'
-import {Button, Upload, message } from 'antd';
+import {Input,Button, Upload, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import './drag.css';
-
+const { TextArea } = Input;
 const { Dragger } = Upload;
-let containerStyle = {
-  display: "flex",
-  flexDirection: "column"
 
-};
+const DragContainer = styled.div`
+  margin-top:100px;
+  margin-bottom:100px;
+  display:flex;
+  flex-direction: column;
+  font-weight:800px;
+  h1{
+    font-weight:800px;
+    border-bottom: 3px solid gray;;
+  }
+`;
+
+const DragBox = styled.div`
+  margin-top:20px;
+  margin-bottom:20px;
+`;
+
+const TextareaContainer= styled.div`
+  margin-top:20px;
+  width:100%;
+  height:100%;
+  margin-bottom:20px;
+`;
 function Drag() {
   const [image, setImage] = useState();
   const [desc, setDesc] = useState("");
-  const handleChange = ((e) => {
+  const [title,setTitle]=useState("");
+  const handleDescChange = ((e) => {
     setDesc(e.target.value);
+
+  })
+  const handleTitleChange= ((e)=> {
+    setTitle(e.target.value);
 
   })
   // const handleOnclick=((e)=> {
@@ -61,11 +84,11 @@ function Drag() {
   };
   return (
 
-    <div className="Container">
-      <h1 className="title">파일 업로드</h1>
-      <div className="drag__box">
+    <DragContainer>
+      <h1>파일 업로드</h1>
+      <DragBox >
         <Dragger {...props} data={{
-          desc
+          desc,title
         }}>
           <p className="ant-upload-drag-icon">
             <InboxOutlined />
@@ -78,11 +101,14 @@ function Drag() {
 
 
         </Dragger>
-      </div>
-        <textarea className="drag__textarea" value={desc} placeholder="설명을 입력하세요." onChange={handleChange} />
+      </DragBox>
+        <Input value ={title} onChange={handleTitleChange}type="text" placeholder="제목을 입력하세요."/>
+        <TextareaContainer>
+          <TextArea className="drag__textarea" value={desc} placeholder="설명을 입력하세요." onChange={handleDescChange} />
+        </TextareaContainer>
         <Button >Upload</Button>
       
-    </div>
+    </DragContainer>
   )
 }
 
