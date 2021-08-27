@@ -1,6 +1,18 @@
 .Container{
+    margin:50px;
     display:flex;
     flex-direction: column;
-    justify-content: center;
-    text-align:center;
+}
+.title{
+
+    font-weight:800px;
+    border-bottom: 3px solid gray;;
+   
+}
+.drag__box{
+    
+}
+.drag__textarea{
+        width:100%;
+        height:100px;
 }

@@ -1,5 +1,10 @@
 .container{
-    border: 1px solid gray;
-    justify-content: center;
-
+    margin:50px;
+    
+   
+    width:100%;
+}
+.title{
+    border-bottom:3px solid gray;
+    font-weight:800;
 }

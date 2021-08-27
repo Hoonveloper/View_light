@@ -8,8 +8,10 @@ const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 let containerStyle= {
+  width:"auto",
   display:"flex",
-  flexDirection:"column"
+  flexDirection:"column",
+  justifyContent:"center"
   
 };
 function Sidebar() {
@@ -52,8 +54,8 @@ function Sidebar() {
         </Menu>
       </Sider>
       <div style={containerStyle}>
-      <Image />
-      <Drag />
+        <Image />
+        <Drag />
       
       </div>
     </Layout>
